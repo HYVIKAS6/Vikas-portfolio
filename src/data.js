@@ -2,7 +2,7 @@
 export const me={name:'VIKAS H Y',role:'Full Stack Developer | AI Enthusiast',college:'Maharaja Institute of Technology',location:'Mysore, India',
 email:'hyvikas6@gmail.com',github:'https://github.com/HYVIKAS6',
 linkedin:'https://www.linkedin.com/in/vikas-h-y-290001329?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-instagram:'https://www.instagram.com/',image:'/profile.png'}
+instagram:'https://www.instagram.com/',image:`${import.meta.env.BASE_URL}profile.png`}
 export const nav=[['Home','home'],['About','about'],['Services','services'],['Projects','projects'],['Components','journey'],['Contact','contact']]
 export const about={intro:"I'm a full stack developer who loves turning ideas into fast, polished products — from interactive interfaces to the APIs and AI models behind them.",
 education:`Engineering student at ${me.college}, ${me.location}.`,interests:'Web performance, creative coding, generative AI, and building intelligent products.',goals:'To grow into an engineer who ships AI-powered products that people genuinely enjoy using.'}
