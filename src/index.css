@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@theme{--color-accent:#ff6a1a;--font-display:'Space Grotesk',sans-serif;--font-body:'Inter',sans-serif}
+html{background:#000}body{margin:0;background:#000;color:#d8d8dc;font-family:var(--font-body);overflow-x:hidden}
+html.lenis{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+::selection{background:var(--color-accent);color:#000}
+.silver{background:linear-gradient(180deg,#fff,#8b8b93);-webkit-background-clip:text;color:transparent}
+.noise{position:absolute;inset:0;pointer-events:none;opacity:.12;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");animation:jit .3s steps(3) infinite}
+.scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
+@keyframes jit{0%{transform:translate(0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}100%{transform:translate(0)}}
+.glitch{animation:gl 5s infinite}
+@keyframes gl{0%,92%,100%{transform:none;text-shadow:none}93%{transform:translateX(-6px);text-shadow:4px 0 #ff6a1a,-4px 0 #0ff}95%{transform:translateX(5px);text-shadow:-4px 0 #ff6a1a,4px 0 #0ff}97%{transform:none}}
