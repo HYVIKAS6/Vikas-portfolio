@@ -84,18 +84,46 @@ export const Journey=()=><S id="journey"><Title a="Experience &" b="Education" n
   <span className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-accent shadow-[0_0_14px_#ff6a1a]"/>
   <p className="text-accent text-xs tracking-widest">{t.y}</p><h3 className="font-display text-2xl text-white">{t.t}</h3><p className="text-zinc-300">{t.s}</p><p className="text-zinc-500 text-sm mt-1">{t.d}</p></Reveal>)}</div></S>
 
-export function Contact(){const [f,setF]=useState({n:'',e:'',m:''});const [ok,setOk]=useState(false)
- const submit=e=>{e.preventDefault();window.location.href=`mailto:${me.email}?subject=${encodeURIComponent('Portfolio message from '+f.n)}&body=${encodeURIComponent(f.m+'\n\n'+f.n+' ('+f.e+')')}`;setOk(true)}
- const inp="w-full bg-transparent border-b border-white/20 focus:border-accent outline-none py-3 text-white placeholder-zinc-600 transition"
- const links=[[Mail,me.email,'mailto:'+me.email],[Github,'GitHub',me.github],[Linkedin,'LinkedIn',me.linkedin],[Instagram,'Instagram',me.instagram]]
+export function Contact(){
+ const [f,setF]=useState({n:'',e:'',m:''});
+ const [status,setStatus]=useState('idle');
+ const [error,setError]=useState('');
+ const submit=async e=>{
+  e.preventDefault();
+  if(status==='sending')return;
+  setStatus('sending');setError('');
+  try{
+   const response=await fetch('https://formspree.io/f/xzerrjgk',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({name:f.n,email:f.e,message:f.m})
+   });
+   if(!response.ok){
+    const data=await response.json().catch(()=>null);
+    throw new Error(data?.errors?.map(item=>item.message).join(' ')||'Unable to send your message. Please try again.');
+   }
+   setStatus('success');
+   setF({n:'',e:'',m:''});
+  }catch(err){
+   setStatus('error');
+   setError(err.message||'Unable to send your message. Please try again.');
+  }
+ };
+ const inp="w-full bg-transparent border-b border-white/20 focus:border-accent outline-none py-3 text-white placeholder-zinc-600 transition";
+ const links=[[Mail,me.email,'mailto:'+me.email],[Github,'GitHub',me.github],[Linkedin,'LinkedIn',me.linkedin],[Instagram,'Instagram',me.instagram]];
  return <S id="contact"><Title a="Let's" b="Talk" n="05"/><div className="grid md:grid-cols-2 gap-14">
   <Reveal className="space-y-5" stagger={.1}>{links.map(([I,l,h])=><a key={l} href={h} target={h.startsWith('mailto')?undefined:'_blank'} rel="noreferrer" className="flex items-center gap-4 text-xl text-zinc-300 hover:text-accent hover:translate-x-2 transition"><I size={22}/>{l}</a>)}</Reveal>
   <Reveal><form onSubmit={submit} className="space-y-6">
-   <input required className={inp} placeholder="Your name" value={f.n} onChange={e=>setF({...f,n:e.target.value})}/>
-   <input required type="email" className={inp} placeholder="Your email" value={f.e} onChange={e=>setF({...f,e:e.target.value})}/>
-   <textarea required rows={4} className={inp} placeholder="Your message" value={f.m} onChange={e=>setF({...f,m:e.target.value})}/>
-   <button className="flex items-center gap-2 bg-accent text-black font-medium rounded-full px-7 py-3 hover:scale-105 transition"><Send size={16}/>Send Message</button>
-   {ok&&<p className="text-sm text-zinc-400">Opening your email app…</p>}</form></Reveal></div></S>}
+   <input required name="name" autoComplete="name" className={inp} placeholder="Your name" value={f.n} onChange={e=>setF({...f,n:e.target.value})}/>
+   <input required name="email" type="email" autoComplete="email" className={inp} placeholder="Your email" value={f.e} onChange={e=>setF({...f,e:e.target.value})}/>
+   <textarea required name="message" rows={4} className={inp} placeholder="Your message" value={f.m} onChange={e=>setF({...f,m:e.target.value})}/>
+   <button disabled={status==='sending'} className="flex items-center gap-2 bg-accent text-black font-medium rounded-full px-7 py-3 hover:scale-105 transition disabled:opacity-60 disabled:cursor-not-allowed"><Send size={16}/>{status==='sending'?'Sending…':'Send Message'}</button>
+   <div role="status" aria-live="polite">
+    {status==='success'&&<p className="text-sm text-emerald-400">Message sent successfully! Thank you for reaching out.</p>}
+    {status==='error'&&<p className="text-sm text-red-400">{error}</p>}
+   </div>
+  </form></Reveal></div></S>
+}
 
 export const Footer=()=><footer className="relative overflow-hidden pt-10 pb-6 text-center border-t border-white/10">
  <p className="font-display font-bold silver text-[14vw] leading-none tracking-tighter">{me.name}</p>
