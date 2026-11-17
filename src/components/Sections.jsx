@@ -16,9 +16,9 @@ export const Skills=()=><S id="services"><Title a="Skills &" b="Services" n="02"
 export const Projects=()=><S id="projects"><Title a="Selected" b="Projects" n="03"/>
  <div className="grid md:grid-cols-3 gap-6">{projects.map(p=><Reveal key={p.t}><Tilt className="rounded-2xl border border-white/10 bg-zinc-950 overflow-hidden h-full">
   <div className="h-44 relative" style={{background:`radial-gradient(circle at 30% 30%,${p.g.split(',')[0]}55,${p.g.split(',')[1]})`}}><div className="scan"/><span className="absolute bottom-3 left-4 font-display text-4xl text-white/80">{p.t.split(' ').map(w=>w[0]).join('')}</span></div>
-  <div className="p-6"><h3 className="font-display text-xl text-white mb-2">{p.t}</h3><p className="text-zinc-400 text-sm mb-4">{p.d}</p>
+  <div className="p-6"><h3 className="font-display text-xl text-white mb-2"><a href={p.gh} target="_blank" rel="noreferrer" className="hover:text-accent transition-colors">{p.t}</a></h3><p className="text-zinc-400 text-sm mb-4">{p.d}</p>
    <div className="flex flex-wrap gap-2 mb-5">{p.tech.map(t=><span key={t} className="text-[11px] text-accent border border-accent/40 rounded-full px-2 py-0.5">{t}</span>)}</div>
-   <div className="flex gap-5 text-sm"><a href={p.gh} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-accent"><Github size={15}/>Code</a><a href={p.live} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-accent"><ExternalLink size={15}/>Live Demo</a></div></div></Tilt></Reveal>)}</div></S>
+   <div className="flex gap-5 text-sm"><a href={p.gh} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-accent"><Github size={15}/>Code</a><a href={p.gh} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-accent"><ExternalLink size={15}/>View Repository</a></div></div></Tilt></Reveal>)}</div></S>
 export const Journey=()=><S id="journey"><Title a="Experience &" b="Education" n="04"/>
  <div className="relative border-l border-white/15 ml-2 space-y-12">{timeline.map(t=><Reveal key={t.t} y={30} className="pl-8 relative">
   <span className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-accent shadow-[0_0_14px_#ff6a1a]"/>
