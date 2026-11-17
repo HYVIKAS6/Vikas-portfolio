@@ -10,9 +10,10 @@ export const skills={'Programming Languages':['JavaScript','Python','Java','C'],
 'Backend Development':['Node.js','Express','REST APIs','Auth'],'Databases':['MongoDB','MySQL','PostgreSQL','Firebase'],
 'AI & Machine Learning':['scikit-learn','TensorFlow','LLM APIs','Prompt Design'],'Development Tools':['Git & GitHub','VS Code','Postman','Vite']}
 export const projects=[
-{t:'AI Chat Assistant',d:'A conversational assistant with streaming replies, memory and a clean chat UI.',tech:['React','Node.js','LLM API'],g:'#ff6a1a,#2a0f00',gh:me.github,live:me.github},
-{t:'Smart Dashboard',d:'Real-time analytics dashboard with charts, filters and role-based access.',tech:['React','Express','MongoDB'],g:'#8ab4ff,#050b1f',gh:me.github,live:me.github},
-{t:'ML Prediction App',d:'Train-and-predict web app exposing a machine learning model through a REST API.',tech:['Python','Flask','scikit-learn'],g:'#b0ffd0,#03140a',gh:me.github,live:me.github}]
+{t:'E-Waste Exchange Platform',d:'An e-waste exchange platform project.',tech:['E-Waste','Exchange Platform'],g:'#ff6a1a,#2a0f00',gh:'https://github.com/HYVIKAS6/E-waste-exchange-platform-',live:'https://github.com/HYVIKAS6/E-waste-exchange-platform-'},
+{t:'Hostel MIT',d:'A hostel management project.',tech:['Hostel','Management'],g:'#8ab4ff,#050b1f',gh:'https://github.com/HYVIKAS6/Hostel-mit',live:'https://github.com/HYVIKAS6/Hostel-mit'},
+{t:'FundedHive Search Automation',d:'A search automation project.',tech:['Search','Automation'],g:'#b0ffd0,#03140a',gh:'https://github.com/HYVIKAS6/fundedhive-search-automation',live:'https://github.com/HYVIKAS6/fundedhive-search-automation'},
+{t:'Gridshield AI',d:'The Gridshield AI project.',tech:['AI'],g:'#d7b5ff,#15091f',gh:'https://github.com/HYVIKAS6/Gridshield-AI',live:'https://github.com/HYVIKAS6/Gridshield-AI'}]
 export const timeline=[
 {y:'Present',t:'B.E. Engineering',s:me.college,d:'Core CS, software engineering and AI coursework.'},
 {y:'Add year',t:'Internship',s:'Company name',d:'Describe what you built and learned here.'},
