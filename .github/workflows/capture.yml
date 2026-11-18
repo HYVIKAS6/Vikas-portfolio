@@ -1,0 +1,44 @@
+name: Capture public project screens
+on:
+  push:
+    branches: [portfolio-project-captures]
+permissions: {}
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Capture public project interfaces
+        run: |
+          mkdir screens
+          python -m pip install Pillow selenium
+          python - <<'PY'
+          import io
+          from PIL import Image
+          from selenium import webdriver
+          from selenium.webdriver.common.by import By
+          from selenium.webdriver.support.ui import WebDriverWait
+          urls = {
+              "ewaste": "https://e-waste-ex.netlify.app/",
+              "hostel": "https://hyvikas6.github.io/Hostel-mit/frontend/",
+              "fundedhive": "https://hyvikas6.github.io/fundedhive-search-automation/",
+              "gridshield": "https://hyvikas6.github.io/Gridshield-AI/",
+          }
+          options = webdriver.ChromeOptions()
+          options.add_argument("--headless=new")
+          options.add_argument("--window-size=1440,960")
+          with webdriver.Chrome(options=options) as browser:
+              for name, url in urls.items():
+                  browser.get(url)
+                  WebDriverWait(browser, 30).until(lambda d: d.find_elements(By.CSS_SELECTOR, "h1,h2"))
+                  browser.execute_async_script("document.fonts.ready.then(arguments[0])")
+                  if name == "fundedhive":
+                      browser.execute_script("Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('Indexation Grid'))?.scrollIntoView()")
+                  image = Image.open(io.BytesIO(browser.get_screenshot_as_png()))
+                  image.thumbnail((1280, 820))
+                  image.save(f"screens/{name}.webp", quality=85)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: project-screens
+          path: screens
+          retention-days: 1
