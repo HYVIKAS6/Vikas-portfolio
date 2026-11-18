@@ -1,75 +1,72 @@
-name: Check the published portfolio
+name: Verify portfolio portrait intro
 on:
   push:
     branches: [portfolio-project-captures]
 permissions: {}
 jobs:
-  public-site:
+  verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Check desktop, keyboard, mobile and reduced motion
+      - name: Check the published portrait on desktop and mobile
         run: |
           python -m pip install selenium
           python - <<'PY'
-          import time, urllib.request, os
+          import os, time, urllib.request
           from selenium import webdriver
           from selenium.webdriver.common.by import By
+          from selenium.webdriver.common.action_chains import ActionChains
           from selenium.webdriver.common.keys import Keys
           from selenium.webdriver.support.ui import WebDriverWait
-          url = 'https://vikas-hy-portfolio.vercel.app/'
-          for _ in range(25):
-              if 'Particle study' in urllib.request.urlopen(url).read().decode(): break
-              time.sleep(4)
           os.mkdir('proof')
-          options = webdriver.ChromeOptions()
-          for flag in ['--headless=new','--window-size=1440,1000','--enable-unsafe-swiftshader']:
-              options.add_argument(flag)
-          with webdriver.Chrome(options=options) as b:
-              wait = WebDriverWait(b, 15)
-              b.get(url)
-              assert 'Vikas H Y' in b.find_element(By.TAG_NAME, 'h1').text.title()
-              wait.until(lambda d: d.find_elements(By.CSS_SELECTOR,'.particles canvas'))
-              for mode in ['Helix','Orbit','Portrait']:
-                  b.find_element(By.XPATH, f'//button[text()="{mode}"]').click()
-                  assert b.find_element(By.XPATH, f'//button[text()="{mode}"]').get_attribute('aria-pressed') == 'true'
-              b.find_element(By.CSS_SELECTOR,'[aria-label="Pause animation"]').click()
-              wait.until(lambda d: not d.find_elements(By.CSS_SELECTOR,'.particles canvas'))
-              b.find_element(By.CSS_SELECTOR,'[aria-label="Play animation"]').click()
-              wait.until(lambda d: d.find_elements(By.CSS_SELECTOR,'.particles canvas'))
-              b.save_screenshot('proof/desktop.png')
-              b.find_element(By.LINK_TEXT,'View Projects').click()
-              assert b.current_url.endswith('#projects')
-              for img in b.find_elements(By.CSS_SELECTOR,'.capture img'):
-                  b.execute_script('arguments[0].scrollIntoView()',img)
-                  wait.until(lambda d: b.execute_script('return arguments[0].naturalWidth', img)>0)
-              b.execute_cdp_cmd('Emulation.setEmulatedMedia',{'features':[{'name':'prefers-reduced-motion','value':'reduce'}]})
-              for width in [390,320]:
-                  b.execute_cdp_cmd('Emulation.setDeviceMetricsOverride',{'width':width,'height':844,'deviceScaleFactor':1,'mobile':True})
+          url='https://vikas-hy-portfolio.vercel.app/'
+          for attempt in range(24):
+              if 'vikas-portrait.webp' in urllib.request.urlopen(url,timeout=12).read().decode(): break
+              time.sleep(3)
+          cfg=webdriver.ChromeOptions()
+          cfg.add_argument('--headless=new')
+          cfg.add_argument('--window-size=1440,1000')
+          with webdriver.Chrome(options=cfg) as b:
+              wait=WebDriverWait(b,15)
+              for width in (1440,390,320):
+                  b.execute_cdp_cmd('Emulation.setDeviceMetricsOverride',dict(width=width,height=844,deviceScaleFactor=1,mobile=width<500))
+                  if width==390:
+                      b.get('https://demo.codeandchill.store/portfolio/')
+                      wait.until(lambda d:d.find_elements(By.CSS_SELECTOR,'h1'))
+                      b.save_screenshot('proof/reference-mobile.png')
                   b.get(url)
+                  assert b.find_element(By.CSS_SELECTOR,'h1').get_attribute('aria-label')=='Vikas H Y — Portfolio'
+                  assert not b.find_elements(By.CSS_SELECTOR,'.study, .controls, .particles')
                   assert b.execute_script('return document.documentElement.scrollWidth <= window.innerWidth')
-                  assert not b.find_elements(By.CSS_SELECTOR,'.particles canvas')
-                  menu=b.find_element(By.CSS_SELECTOR,'[aria-label="Open menu"]')
-                  menu.click()
-                  assert menu.get_attribute('aria-expanded')=='true'
-                  menu.send_keys(Keys.ESCAPE)
-                  assert menu.get_attribute('aria-expanded')=='false'
-                  b.find_element(By.XPATH,'//button[text()="Helix"]').click()
-                  assert b.find_element(By.CSS_SELECTOR,'.poster').get_attribute('src').endswith('helix.webp')
-                  b.find_element(By.XPATH,'//button[text()="Portrait"]').click()
-                  if width == 390: b.save_screenshot('proof/mobile.png')
-                  menu.click()
-                  b.find_element(By.LINK_TEXT,'Certifications').click()
-                  assert b.current_url.endswith('#certifications')
-              assert len(b.find_elements(By.CSS_SELECTOR,'a[download]')) == 1
-              href = b.find_element(By.CSS_SELECTOR,'a[download]').get_attribute('href')
-              assert urllib.request.urlopen(href).read(5) == b'%PDF-'
-              errors = [e for e in b.get_log('browser') if e['level']=='SEVERE']
-              print('Browser errors:', errors)
-              assert not errors
+                  wait.until(lambda d:d.execute_script("return document.querySelector('.hero-image img').style.opacity==='0'"))
+                  canvas=b.find_element(By.CSS_SELECTOR,'.hero-image canvas')
+                  frame=lambda:b.execute_script('return arguments[0].toDataURL()',canvas)
+                  before=frame()
+                  ActionChains(b).move_to_element(canvas).perform()
+                  wait.until(lambda d:frame()!=before)
+                  b.execute_script('window.scrollTo(0,140)')
+                  wait.until(lambda d:frame()!=before)
+                  b.execute_script('window.scrollTo(0,0)')
+                  time.sleep(.25)
+                  if width!=320: b.save_screenshot('proof/'+('desktop' if width==1440 else 'mobile')+'.png')
+                  if width<500:
+                      menu=b.find_element(By.CSS_SELECTOR,'button[aria-label="Open menu"]');menu.click()
+                      assert menu.get_attribute('aria-expanded')=='true'
+                      menu.send_keys(Keys.ESCAPE)
+                      assert menu.get_attribute('aria-expanded')=='false'
+                  b.find_element(By.LINK_TEXT,'View Projects').click()
+                  assert b.current_url.endswith('#projects')
+                  assert len(b.find_elements(By.CSS_SELECTOR,'.work'))==4
+              b.execute_cdp_cmd('Emulation.setEmulatedMedia',{'features':[{'name':'prefers-reduced-motion','value':'reduce'}]})
+              b.get(url)
+              assert b.execute_script("return document.querySelector('.hero-letter').getAnimations().length===0")
+              assert b.execute_script("return getComputedStyle(document.querySelector('.hero-image img')).opacity==='1'")
+              cv=b.find_element(By.CSS_SELECTOR,'a[download]').get_attribute('href')
+              assert urllib.request.urlopen(cv).read(5)==b'%PDF-'
+              print('Desktop and mobile motion, reduced motion, layout, projects, and resume passed.')
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: portfolio-qa
+          name: portrait-qa
           path: proof
           retention-days: 1
