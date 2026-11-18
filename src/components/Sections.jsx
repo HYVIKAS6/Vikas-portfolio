@@ -82,7 +82,7 @@ export const Projects=()=><S id="projects"><Title a="Selected" b="Projects" n="0
 export const Journey=()=><S id="journey"><Title a="Experience &" b="Education" n="04"/>
  <div className="relative border-l border-white/15 ml-2 space-y-12">{timeline.map(t=><Reveal key={t.t} y={30} className="pl-8 relative">
   <span className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-accent shadow-[0_0_14px_#ff6a1a]"/>
-  <p className="text-accent text-xs tracking-widest">{t.y}</p><h3 className="font-display text-2xl text-white">{t.t}</h3><p className="text-zinc-300">{t.s}</p><p className="text-zinc-500 text-sm mt-1">{t.d}</p></Reveal>)}</div></S>
+  <p className="text-accent text-xs tracking-widest">{t.y}</p><h3 className="font-display text-2xl text-white">{t.t}</h3><p className="text-zinc-300">{t.s}</p><p className="text-zinc-500 text-sm mt-1">{t.d}</p>{t.certificate && <a href={t.certificate} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-3 text-sm text-accent hover:underline">View Certificate <ExternalLink size={14}/></a>}</Reveal>)}</div></S>
 
 export function Contact(){
  const [f,setF]=useState({n:'',e:'',m:''});
