@@ -1,6 +1,6 @@
 # Vikas H Y
 
-Full-stack development, machine learning projects and interactive 3D particle studies by Vikas H Y, a computer science student in Mysore, India.
+Full-stack development, machine learning projects and creative coding by Vikas H Y, a computer science student in Mysore, India.
 
 [Portfolio](https://vikas-hy-portfolio.vercel.app/) · [Resume](https://vikas-hy-portfolio.vercel.app/Vikas-H-Y-Resume.pdf) · [LinkedIn](https://www.linkedin.com/in/vikas-h-y-290001329)
 
@@ -17,4 +17,4 @@ Full-stack development, machine learning projects and interactive 3D particle st
 
 Run `npm ci` and `npm run dev`. Build with `npm run build`. Vercel serves the site at the root. GitHub Pages uses the repository subpath.
 
-Profile details and project links live in `src/data.js`. Project images in `public/work` capture the linked interfaces. The build prerenders the portfolio so its content and links are available before React loads. The Three.js and GSAP particle scene loads separately.
+Profile details and project links live in `src/data.js`. Project images in `public/work` capture the linked interfaces. The build prerenders the portfolio so its content and links are available before React loads. The letters animate with CSS. A 2D canvas assembles project-textured tiles over the portrait and responds to pointer movement and scroll. Reduced-motion visitors see the final composition immediately.

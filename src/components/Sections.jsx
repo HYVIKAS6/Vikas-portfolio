@@ -57,13 +57,12 @@ export function About() {
       </h2>
       <div>
         <p className="statement">
-          My favourite part of this portfolio is the portrait. Move over it and the face comes
-          apart, a few points at a time.
+          I build software and make pixels move.
         </p>
         <p className="body-copy">
           I study computer science with a focus on artificial intelligence at {me.college} in
           Mysore. My projects range from Python automation to web interfaces for campus life.
-          Outside that work, I experiment with particle shapes, timing and motion in the browser.
+          Outside that work, I experiment with 3D, typography and motion in the browser.
         </p>
         <dl className="facts">
           <div id="journey">
