@@ -39,7 +39,7 @@ export const skills = {
 export const projects = [
   {
     t: 'E-Waste Exchange Platform',
-    d: 'Sustainable circular economy marketplace with real-time pickup logistics and ElectroAI smart recycling assistant. Winner at MIT Mysore Hackathon.',
+    d: 'Sustainable circular economy marketplace with real-time pickup logistics and ElectroAI smart recycling assistant.',
     tech: ['React', 'Node.js', 'Firebase', 'Tailwind CSS', 'ElectroAI'],
     g: '#ff6a1a,#2a0f00',
     gh: 'https://github.com/HYVIKAS6/E-waste-exchange-platform-',
@@ -77,7 +77,6 @@ export const projects = [
 
 export const timeline = [
   { y: 'Present', t: 'B.E. Computer Science & Engineering', s: me.college, d: 'Core CS, software engineering, systems design, and AI coursework.' },
-  { y: '2024', t: 'MIT Mysore Hackathon Winner', s: 'Hackathon Champion', d: 'Engineered and shipped the E-Waste Exchange Platform within 24 hours.' },
-  { y: '2024', t: 'FundedHive Automated Indexation Suite', s: 'Engineering Project', d: 'Architected high-speed multi-engine indexation & social media crawlers.' },
-  { y: '2024', t: 'GridShield AI Research & Development', s: 'AI & Systems Defense', d: 'Authored multi-model intrusion detection pipelines & physics-informed ML models.' }
+  { y: '2026', t: 'FundedHive Automated Indexation Suite', s: 'Engineering Project', d: 'Architected high-speed multi-engine indexation & social media crawlers.' },
+  { y: '2026', t: 'GridShield AI Research & Development', s: 'AI & Systems Defense', d: 'Authored multi-model intrusion detection pipelines & physics-informed ML models.' }
 ]
