@@ -8,8 +8,8 @@ export default function App() {
       <Nav />
       <main id="main" tabIndex="-1">
         <Hero />
-        <Projects />
         <About />
+        <Projects />
         <Certifications />
         <Contact />
       </main>

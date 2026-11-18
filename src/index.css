@@ -380,6 +380,19 @@ footer a {
   grid-template-columns: 0.85fr 1.25fr;
   gap: clamp(24px, 5vw, 75px);
 }
+.about-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+.about-portrait {
+  width: 112px;
+  height: 112px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #202022;
+}
 .statement {
   font-size: clamp(23px, 2.5vw, 36px);
   line-height: 1.2;
@@ -525,6 +538,16 @@ footer {
   }
   .hero-details {
     align-items: start;
+  }
+  .about-heading {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .about-portrait {
+    width: 76px;
+    height: 76px;
   }
   .split {
     grid-template-columns: 1fr;

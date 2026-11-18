@@ -6,8 +6,9 @@ export function Nav() {
   const [open, setOpen] = useState(false)
   const toggle = useRef(null)
   const links = [
-    ['Projects', 'projects'],
+    ['Home', 'home'],
     ['About', 'about'],
+    ['Projects', 'projects'],
     ['Certifications', 'certifications'],
   ]
   function closeOnEscape(event) {

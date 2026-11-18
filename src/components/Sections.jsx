@@ -52,9 +52,18 @@ export function Projects() {
 export function About() {
   return (
     <section className="section shell split" id="about">
-      <h2>
-        About me<span>.</span>
-      </h2>
+      <div className="about-heading">
+        <h2>About me<span>.</span></h2>
+        <img
+          className="about-portrait"
+          src={asset('about-vikas.png')}
+          alt="Portrait of Vikas H Y"
+          width="112"
+          height="112"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <div>
         <p className="statement">
           I build software and make pixels move.
