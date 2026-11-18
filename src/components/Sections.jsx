@@ -51,9 +51,9 @@ export function Projects() {
 
 export function About() {
   return (
-    <section className="section shell split" id="about">
-      <div className="about-heading">
-        <h2>About me<span>.</span></h2>
+    <section className="section shell" id="about">
+      <h2>About me<span>.</span></h2>
+      <div className="about-layout">
         <img
           className="about-portrait"
           src={asset('about-vikas.png')}
@@ -63,30 +63,36 @@ export function About() {
           loading="lazy"
           decoding="async"
         />
-      </div>
-      <div>
-        <p className="statement">
-          I build software and make pixels move.
-        </p>
-        <p className="body-copy">
-          I study computer science with a focus on artificial intelligence at {me.college} in
-          Mysore. My projects range from Python automation to web interfaces for campus life.
-          Outside that work, I experiment with 3D, typography and motion in the browser.
-        </p>
-        <dl className="facts">
-          <div id="journey">
-            <dt>Education</dt>
-            <dd>
-              {me.degree}
-              <br />
-              {me.college}
-            </dd>
-          </div>
-          <div id="services">
-            <dt>Creative tools</dt>
-            <dd>Three.js, GSAP, React, Vite and Tailwind CSS</dd>
-          </div>
-        </dl>
+        <div className="about-details">
+          <p className="statement">
+            I build software and make pixels move.
+          </p>
+          <p className="body-copy">
+            I study computer science with a focus on artificial intelligence at {me.college} in
+            Mysore. My projects range from Python automation to web interfaces for campus life.
+            Outside that work, I experiment with 3D, typography and motion in the browser.
+          </p>
+          <p className="body-copy">
+            I like working on both sides of an interface. With FundedHive, that means using Python
+            to collect search results and laying them out so someone can compare engines side by
+            side. With this portfolio, it means turning a photograph into pixels that move when
+            you touch them.
+          </p>
+          <dl className="facts">
+            <div id="journey">
+              <dt>Education</dt>
+              <dd>
+                {me.degree}
+                <br />
+                {me.college}
+              </dd>
+            </div>
+            <div id="services">
+              <dt>Creative tools</dt>
+              <dd>Three.js, GSAP, React, Vite and Tailwind CSS</dd>
+            </div>
+          </dl>
+        </div>
       </div>
     </section>
   )
