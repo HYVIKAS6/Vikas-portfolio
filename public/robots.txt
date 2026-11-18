@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vikas-hy-portfolio.vercel.app/sitemap.xml

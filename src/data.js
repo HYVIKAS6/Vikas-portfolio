@@ -1,83 +1,71 @@
-// ✏️ EDIT YOUR CONTENT HERE
+export const asset = (name) => import.meta.env.BASE_URL + name
+
 export const me = {
-  name: 'VIKAS H Y',
-  role: 'Full Stack Developer | AI Enthusiast',
-  college: 'Maharaja Institute of Technology',
+  name: 'Vikas H Y',
+  role: 'Full-stack developer',
   location: 'Mysore, India',
+  college: 'Maharaja Institute of Technology',
+  degree: 'B.E. in Computer Science and Engineering (Artificial Intelligence)',
   email: 'hyvikas6@gmail.com',
   github: 'https://github.com/HYVIKAS6',
-  linkedin: 'https://www.linkedin.com/in/vikas-h-y-290001329?utm_source=share_via&utm_content=profile&utm_medium=member_android',
-  instagram: 'https://www.instagram.com/',
-  image: `${import.meta.env.BASE_URL}profile.png`
+  linkedin: 'https://www.linkedin.com/in/vikas-h-y-290001329',
+  resume: asset('Vikas-H-Y-Resume.pdf'),
 }
 
-export const nav = [
-  ['Home', 'home'],
-  ['About', 'about'],
-  ['Services', 'services'],
-  ['Projects', 'projects'],
-  ['Experience', 'journey'],
-  ['Contact', 'contact']
-]
-
-export const about = {
-  intro: "I'm a full stack developer who loves turning ideas into fast, polished products — from interactive interfaces to the APIs and AI models behind them.",
-  education: `Engineering student at ${me.college}, ${me.location}.`,
-  interests: 'Web performance, creative coding, generative AI, and building intelligent products.',
-  goals: 'To grow into an engineer who ships AI-powered products that people genuinely enjoy using.'
-}
-
-export const skills = {
-  'Programming Languages': ['JavaScript', 'Python', 'Java', 'C'],
-  'Frontend Development': ['React', 'Tailwind CSS', 'GSAP', 'Three.js'],
-  'Backend Development': ['Node.js', 'Express', 'REST APIs', 'Auth'],
-  'Databases': ['MongoDB', 'MySQL', 'PostgreSQL', 'Firebase'],
-  'AI & Machine Learning': ['scikit-learn', 'TensorFlow', 'PyTorch', 'LLM APIs', 'Prompt Design'],
-  'Development Tools': ['Git & GitHub', 'VS Code', 'Postman', 'Vite']
+export const certificate = {
+  title: 'Data Structures in C',
+  issuer: 'University of Michigan',
+  date: '30 January 2026',
+  url: 'https://www.coursera.org/account/accomplishments/verify/GTDWPHR3Q7P9',
 }
 
 export const projects = [
   {
-    t: 'E-Waste Exchange Platform',
-    d: 'Sustainable circular economy marketplace with real-time pickup logistics and ElectroAI smart recycling assistant.',
-    tech: ['React', 'Node.js', 'Firebase', 'Tailwind CSS', 'ElectroAI'],
-    g: '#ff6a1a,#2a0f00',
-    gh: 'https://github.com/HYVIKAS6/E-waste-exchange-platform-',
-    live: 'https://e-waste-ex.netlify.app',
-    image: `${import.meta.env.BASE_URL}project-ewaste.png`
+    id: 'gridshield',
+    name: 'GridShield AI',
+    field: 'Machine learning',
+    description:
+      'A voltage reading makes more sense beside the rest of the grid. GridShield compares simulated bus telemetry with electrical constraints and anomaly models, then plots the signals together.',
+    tech: ['Python', 'Streamlit', 'PyTorch'],
+    alt: 'GridShield simulator showing grid frequency, voltage and a live telemetry chart.',
+    demo: 'https://hyvikas6.github.io/Gridshield-AI/',
+    action: 'Explore simulator',
+    source: me.github + '/Gridshield-AI',
   },
   {
-    t: 'Hostel MIT Management',
-    d: 'Next-gen institutional hostel operations suite featuring smart room allocations, warden approval workflows, fee records, and live status registries.',
-    tech: ['Java', 'Spring', 'MySQL', 'JavaScript', 'HTML5/CSS3'],
-    g: '#8ab4ff,#050b1f',
-    gh: 'https://github.com/HYVIKAS6/Hostel-mit',
-    live: 'https://hyvikas6.github.io/Hostel-mit/',
-    image: `${import.meta.env.BASE_URL}project-hostel.png`
+    id: 'ewaste',
+    name: 'E-Waste Exchange',
+    field: 'Web application',
+    description:
+      'A pickup starts with a device someone no longer uses. Electro_HUB brings item listings, scrap dealers and pickup scheduling into one recycling workflow.',
+    tech: ['JavaScript', 'HTML', 'CSS'],
+    alt: 'Electro_HUB homepage with the recycling introduction and the link to list a device.',
+    demo: 'https://e-waste-ex.netlify.app/',
+    action: 'Visit platform',
+    source: me.github + '/E-waste-exchange-platform-',
   },
   {
-    t: 'FundedHive Search Automation',
-    d: 'High-throughput parallel search engine indexation verifier across 8 major search providers, featuring real-time X/Twitter parsing and automated HTML reporting.',
-    tech: ['Python', 'Selenium', 'Async Search Engines', 'HTML Report Generator'],
-    g: '#38bdf8,#03141a',
-    gh: 'https://github.com/HYVIKAS6/fundedhive-search-automation',
-    live: 'https://hyvikas6.github.io/fundedhive-search-automation/',
-    image: `${import.meta.env.BASE_URL}project-fundedhive.png`
+    id: 'fundedhive',
+    name: 'FundedHive Search Automation',
+    field: 'Browser automation',
+    description:
+      'A Python tool runs the same query across search engines and records what each returns. The HTML report keeps result titles, links and screenshots together for inspection.',
+    tech: ['Python', 'Selenium', 'CSV'],
+    alt: 'Published FundedHive search report with individual engine results and browser captures.',
+    demo: 'https://hyvikas6.github.io/fundedhive-search-automation/',
+    action: 'Read report',
+    source: me.github + '/fundedhive-search-automation',
   },
   {
-    t: 'GridShield AI',
-    d: 'Industrial cyber-physical smart grid defense platform with physics-informed consistency checking, IEEE 9/14-bus simulations, and ensemble AI anomaly detection.',
-    tech: ['Python', 'PyTorch LSTM', 'XGBoost', 'Pandapower', 'Streamlit'],
-    g: '#d7b5ff,#15091f',
-    gh: 'https://github.com/HYVIKAS6/Gridshield-AI',
-    live: 'https://hyvikas6.github.io/Gridshield-AI/',
-    image: `${import.meta.env.BASE_URL}project-gridshield.png`
-  }
-]
-
-export const timeline = [
-  { y: 'Present', t: 'B.E. Computer Science & Engineering', s: me.college, d: 'Core CS, software engineering, systems design, and AI coursework.' },
-  { y: 'Certification', t: 'Data Structures in C', s: 'University of Michigan | Coursera', d: 'Course covering pointers, arrays, C structures, linked lists and dynamic memory allocation.', certificate: 'https://www.coursera.org/account/accomplishments/verify/GTDWPHR3Q7P9' },
-  { y: '2026', t: 'FundedHive Automated Indexation Suite', s: 'Engineering Project', d: 'Architected high-speed multi-engine indexation & social media crawlers.' },
-  { y: '2026', t: 'GridShield AI Research & Development', s: 'AI & Systems Defense', d: 'Authored multi-model intrusion detection pipelines & physics-informed ML models.' }
+    id: 'hostel',
+    name: 'Hostel MIT',
+    field: 'Campus software',
+    description:
+      'Separate student and administrator views cover two sides of hostel life. Students can view their room and raise complaints. Administrators manage rooms, allocations and student records.',
+    tech: ['Java', 'JavaScript', 'HTML'],
+    alt: 'Hostel MIT sign-in page offering separate student and administrator entrances.',
+    demo: 'https://hyvikas6.github.io/Hostel-mit/frontend/',
+    action: 'Open interface',
+    source: me.github + '/Hostel-mit',
+  },
 ]
