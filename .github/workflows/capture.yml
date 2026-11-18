@@ -12,7 +12,7 @@ jobs:
           mkdir screens
           python -m pip install Pillow selenium
           python - <<'PY'
-          import io
+          import io, time
           from PIL import Image
           from selenium import webdriver
           from selenium.webdriver.common.by import By
@@ -33,6 +33,7 @@ jobs:
                   browser.execute_async_script("document.fonts.ready.then(arguments[0])")
                   if name == "fundedhive":
                       browser.execute_script("Array.from(document.querySelectorAll('h2')).find(h => h.textContent.includes('Indexation Grid'))?.scrollIntoView()")
+                  time.sleep(3)
                   image = Image.open(io.BytesIO(browser.get_screenshot_as_png()))
                   image.thumbnail((1280, 820))
                   image.save(f"screens/{name}.webp", quality=85)
