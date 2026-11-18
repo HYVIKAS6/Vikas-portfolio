@@ -77,6 +77,7 @@ export const projects = [
 
 export const timeline = [
   { y: 'Present', t: 'B.E. Computer Science & Engineering', s: me.college, d: 'Core CS, software engineering, systems design, and AI coursework.' },
+  { y: 'Certification', t: 'Data Structures in C', s: 'University of Michigan | Coursera', d: 'Course covering pointers, arrays, C structures, linked lists and dynamic memory allocation.', certificate: 'https://www.coursera.org/account/accomplishments/verify/GTDWPHR3Q7P9' },
   { y: '2026', t: 'FundedHive Automated Indexation Suite', s: 'Engineering Project', d: 'Architected high-speed multi-engine indexation & social media crawlers.' },
   { y: '2026', t: 'GridShield AI Research & Development', s: 'AI & Systems Defense', d: 'Authored multi-model intrusion detection pipelines & physics-informed ML models.' }
 ]
