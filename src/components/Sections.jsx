@@ -104,16 +104,24 @@ export function Certifications() {
       <h2>
         Certifications<span>.</span>
       </h2>
-      <div className="credential">
-        <Award size={26} aria-hidden="true" />
-        <p className="eyebrow">{certificate.issuer} · Coursera</p>
-        <h3>{certificate.title}</h3>
-        <p>
-          Completed <time dateTime="2026-01-30">{certificate.date}</time>
-        </p>
-        <a className="text-link" href={certificate.url}>
-          Verify credential <ArrowUpRight size={16} />
-        </a>
+      <div>
+        {[
+          { ...certificate, iso: '2026-01-30' },
+          { title: 'Algorithms and Complexity', issuer: 'University of London', date: '24 May 2026', iso: '2026-05-24', url: 'https://www.coursera.org/account/accomplishments/verify/XQLC8AUC5LY7' },
+          { title: 'Google AI Essentials', issuer: 'Google', date: '22 October 2025', iso: '2025-10-22', url: 'https://www.coursera.org/account/accomplishments/specialization/HDBYAHR2WIBM' },
+        ].map((credential) => (
+          <div className="credential" key={credential.url}>
+            <Award size={26} aria-hidden="true" />
+            <p className="eyebrow">{credential.issuer} · Coursera</p>
+            <h3>{credential.title}</h3>
+            <p>
+              Completed <time dateTime={credential.iso}>{credential.date}</time>
+            </p>
+            <a className="text-link" href={credential.url}>
+              Verify credential <ArrowUpRight size={16} />
+            </a>
+          </div>
+        ))}
       </div>
     </section>
   )
