@@ -33,10 +33,13 @@
   };
   const panel = document.createElement('section'); panel.className = 'pa-panel'; panel.setAttribute('aria-label','Analytics privacy choices');
   panel.innerHTML = '<strong>Analytics preferences</strong><p>Optional analytics helps me understand visits and project interest. <a href="/privacy.html">Privacy details</a>.</p><div><button type="button" data-choice="yes">Accept analytics</button><button type="button" data-choice="no">Decline</button></div>';
-  const settings = document.createElement('button'); settings.type = 'button'; settings.className = 'pa-settings'; settings.textContent = 'Analytics privacy';
+  const settings = document.createElement('button'); settings.type = 'button'; settings.className = 'pa-settings'; settings.textContent = 'Privacy';
   settings.onclick = () => { panel.hidden = false; settings.hidden = true; panel.querySelector('button').focus(); };
   panel.addEventListener('click', e => { const b = e.target.closest('[data-choice]'); if (b) save(b.dataset.choice); });
   panel.hidden = choice === 'yes' || choice === 'no'; settings.hidden = !panel.hidden;
-  document.body.append(panel, settings);
+  document.body.append(panel);
+  // Keep the preference control outside React's hydrated root.
+  const privacyFooter = document.createElement('div'); privacyFooter.className = 'pa-footer';
+  privacyFooter.append(settings); document.body.append(privacyFooter);
   if (choice === 'yes') start();
 })();
