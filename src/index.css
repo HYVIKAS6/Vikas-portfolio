@@ -323,6 +323,21 @@ footer a {
 .work {
   min-width: 0;
 }
+.work--live {
+  position: relative;
+}
+.work--live .work-links a:first-child::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+.work--live .capture,
+.work--live .work-links a + a {
+  position: relative;
+  z-index: 2;
+}
 .capture {
   display: grid;
   place-items: center;

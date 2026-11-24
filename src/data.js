@@ -28,8 +28,8 @@ export const projects = [
       'A voltage reading makes more sense beside the rest of the grid. GridShield compares simulated bus telemetry with electrical constraints and anomaly models, then plots the signals together.',
     tech: ['Python', 'Streamlit', 'PyTorch'],
     alt: 'GridShield simulator showing grid frequency, voltage and a live telemetry chart.',
-    demo: 'https://hyvikas6.github.io/Gridshield-AI/',
-    action: 'Explore simulator',
+    demo: 'https://gridshield-ai-9rfgltanyslf9tuihswpd2.streamlit.app/',
+    action: 'Open live project',
     source: me.github + '/Gridshield-AI',
   },
   {

@@ -15,7 +15,7 @@ export function Projects() {
       </div>
       <div className="work-grid">
         {projects.map((p) => (
-          <article className="work" key={p.id}>
+          <article className={p.id === 'gridshield' ? 'work work--live' : 'work'} key={p.id}>
             <a className={'capture ' + p.id} href={p.demo} aria-label={p.action + ' — ' + p.name}>
               <img
                 src={asset('work/' + p.id + '.webp')}

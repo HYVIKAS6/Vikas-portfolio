@@ -8,7 +8,7 @@ Full-stack development, machine learning projects and creative coding by Vikas H
 
 | Project | Interface | Source |
 | --- | --- | --- |
-| GridShield AI | [Telemetry simulator](https://hyvikas6.github.io/Gridshield-AI/) | [Repository](https://github.com/HYVIKAS6/Gridshield-AI) |
+| GridShield AI | [Live project](https://gridshield-ai-9rfgltanyslf9tuihswpd2.streamlit.app/) | [Repository](https://github.com/HYVIKAS6/Gridshield-AI) |
 | E-Waste Exchange | [Recycling platform](https://e-waste-ex.netlify.app/) | [Repository](https://github.com/HYVIKAS6/E-waste-exchange-platform-) |
 | FundedHive Search Automation | [Published report](https://hyvikas6.github.io/fundedhive-search-automation/) | [Repository](https://github.com/HYVIKAS6/fundedhive-search-automation) |
 | Hostel MIT | [Student and administrator interface](https://hyvikas6.github.io/Hostel-mit/frontend/) | [Repository](https://github.com/HYVIKAS6/Hostel-mit) |
